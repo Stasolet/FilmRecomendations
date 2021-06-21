@@ -13,13 +13,11 @@ from MovieLens.RecomendEngine import get_recomendation, get_films, get_multi_rec
 app = Flask(__name__)
 cors = CORS(app)
 
-pg_uri = "postgresql://imqipyphqfulxi:d79c72b0e3668aed5f86045dadd2b373c22cb331a4700363c55977b1ad05ddac@ec2-52-209-134-160.eu-west-1.compute.amazonaws.com:5432/dcih2pgt4hn8g9"
-engine = create_engine(pg_uri)
 
-engine = create_engine(os.getenv("DATABASE_URL"))
+engine = create_engine(os.getenv("PG_DATABASE_URL"))
 db = scoped_session(sessionmaker(autocommit=False,
-                                         autoflush=False,
-                                         bind=engine))
+                                 autoflush=False,
+                                 bind=engine))
 @app.route("/")
 @cross_origin()
 def hello_world():
