@@ -9,7 +9,7 @@ film_df = film_df.set_index('id')
 
 def get_poster_url(film_id: int) -> str:
     try:
-        result = posters_df.iloc[film_id].poster_url
+        result = posters_df.loc[film_id].poster_url
     except KeyError:
         result = "broken_poster"
     return result
@@ -17,7 +17,7 @@ def get_poster_url(film_id: int) -> str:
 
 def get_film_url(film_id: int) -> str:
     try:
-        result = film_df.iloc[film_id].movie_url
+        result = film_df.loc[film_id].movie_url
     except KeyError:
         result = "broken_poster"
     return result
