@@ -14,7 +14,7 @@ app = Flask(__name__)
 cors = CORS(app)
 
 
-engine = create_engine(os.getenv("PG_DATABASE_URL"))
+engine = create_engine(os.getenv("PG_DATABASE_URL").replace("postgres://", "postgresql://", 1))
 db = scoped_session(sessionmaker(autocommit=False,
                                  autoflush=False,
                                  bind=engine))
